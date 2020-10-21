@@ -27,7 +27,7 @@
           <h1>Get Started</h1>
           <div>
             <label for="name">Name</label>
-            <input v-model.trim="signupForm.name" type="text" placeholder="Savvy Apps" id="name" />
+            <input v-model.trim="signupForm.name" type="text" placeholder="Jane Doe" id="name" />
           </div>
           <div>
             <label for="title">Title</label>
@@ -39,7 +39,7 @@
           </div>
           <div>
             <label for="password2">Password</label>
-            <input v-model.trim="signupForm.password" type="password" placeholder="min 6 characters" id="password2" />
+            <input v-model.trim="signupForm.password" type="password" placeholder="Mininum of 6 characters" id="password2" />
           </div>
           <button @click="signup()" class="button">Sign Up</button>
           <div class="extras">
