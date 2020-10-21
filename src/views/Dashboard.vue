@@ -22,7 +22,8 @@
           <div v-for="post in posts" :key="post.id" class="post">
             <h5>{{ post.userName }}</h5>
             <span>{{ post.createdOn | formatDate }}</span>
-            <p>{{ post.content | trimLength }}</p>
+            <p class="pb-2">{{ post.content | trimLength }}</p>
+            <img width="200" src="https://cdn.britannica.com/26/162626-050-3534626F/Koala.jpg">
             <ul>
               <li><a @click="toggleCommentModal(post)">Comments {{ post.comments }}</a></li>
               <li><a @click="likePost(post.id, post.likes)">Likes {{ post.likes }}</a></li>
