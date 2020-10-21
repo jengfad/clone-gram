@@ -4,7 +4,7 @@
     <section>
       <div class="col1">
         <h1>Clonegram</h1>
-        <p>Welcome to Clonegram: A sample social media web app powered by Vue.js and Firebase.</p>
+        <p>Demo social media app Powered by Vue.js and Firebase.</p>
       </div>
       <div :class="{ 'signup-form': !showLoginForm }" class="col2">
         <form v-if="showLoginForm" @submit.prevent>
