@@ -10,5 +10,5 @@ cd dist
 git init
 git add -A
 git commit -m 'deploy'
-git push -f https://github.com/jengfad/clone-gram.git main:gh-pages
+git push -f https://github.com/jengfad/clone-gram.git master:gh-pages
 cd -
