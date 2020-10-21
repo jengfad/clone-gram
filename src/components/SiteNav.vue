@@ -3,7 +3,10 @@
     <section>
       <div class="col1">
         <router-link to="/">
-          <h3>Clonegram</h3>
+          <h3>
+            <i class="fas fa-robot"></i>
+            <span class="pl-2">Clonegram</span>
+          </h3>
         </router-link>
         <ul class="inline">
           <li>

@@ -9,10 +9,10 @@
           <h5>{{ userProfile.name }}</h5>
           <p>{{ userProfile.title }}</p>
           <div class="create-post">
-            <p>create a post</p>
+            <p>Create a post</p>
             <form @submit.prevent>
               <textarea v-model.trim="post.content"></textarea>
-              <button @click="createPost()" :disabled="post.content === ''" class="button">post</button>
+              <button @click="createPost()" :disabled="post.content === ''" class="button">Post</button>
             </form>
           </div>
         </div>
@@ -24,9 +24,9 @@
             <span>{{ post.createdOn | formatDate }}</span>
             <p>{{ post.content | trimLength }}</p>
             <ul>
-              <li><a @click="toggleCommentModal(post)">comments {{ post.comments }}</a></li>
-              <li><a @click="likePost(post.id, post.likes)">likes {{ post.likes }}</a></li>
-              <li><a @click="viewPost(post)">view full post</a></li>
+              <li><a @click="toggleCommentModal(post)">Comments {{ post.comments }}</a></li>
+              <li><a @click="likePost(post.id, post.likes)">Likes {{ post.likes }}</a></li>
+              <li><a @click="viewPost(post)">View full post</a></li>
             </ul>
           </div>
         </div>
@@ -46,8 +46,8 @@
             <span>{{ fullPost.createdOn | formatDate }}</span>
             <p>{{ fullPost.content }}</p>
             <ul>
-              <li><a>comments {{ fullPost.comments }}</a></li>
-              <li><a>likes {{ fullPost.likes }}</a></li>
+              <li><a>Comments {{ fullPost.comments }}</a></li>
+              <li><a>Likes {{ fullPost.likes }}</a></li>
             </ul>
           </div>
           <div v-show="postComments.length" class="comments">
