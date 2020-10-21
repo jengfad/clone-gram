@@ -30,8 +30,8 @@
             <input v-model.trim="signupForm.name" type="text" placeholder="Jane Doe" id="name" />
           </div>
           <div>
-            <label for="title">Title</label>
-            <input v-model.trim="signupForm.title" type="text" placeholder="Company" id="title" />
+            <label for="title">Bio</label>
+            <input v-model.trim="signupForm.title" type="text" placeholder="What's your life passion?" id="title" />
           </div>
           <div>
             <label for="email2">Email</label>
