@@ -4,12 +4,12 @@
     <PasswordReset v-if="showPasswordReset" @close="togglePasswordReset()"></PasswordReset>
     <div class="card">
       <div class="card-body">
-        <div>
+        <div class="d-flex flex-column align-items-center">
           <h1>
             <i class="fas fa-robot"></i>
             <span class="pl-2">Clonegram</span>
           </h1>
-          <p>Demo social media web app: Powered by Vue.js and Firebase.</p>
+          <p class="description">Powered by Vue.js and Firebase</p>
         </div>
         <hr/>
         <div :class="{ 'signup-form': !showLoginForm }">
@@ -56,12 +56,12 @@
                 <label for="password2">Password</label>
                 <input v-model.trim="signupForm.password" type="password" placeholder="Mininum of 6 characters" id="password2" />
               </div>
-              <button @click="signup()" class="button align-self-end">Sign Up</button>
-              <div class="extras">
-                <a @click="toggleForm()">
+              <div class="d-flex">
+                <a @click="toggleForm()" class="flex-grow-1">
                   <i class="fas fa-arrow-left"></i>
                   <span class="pl-2">Back to Log In</span>
                 </a>
+                <button @click="signup()" class="button">Sign Up</button>
               </div>
             </div>
           </form>
@@ -122,5 +122,14 @@ export default {
 <style lang="scss" scoped>
   .main {
     color: teal;
+
+    .card {
+      min-width: 400px;
+    }
+      
+    p.description {
+      font-size: smaller;
+    }
   }
+
 </style>
