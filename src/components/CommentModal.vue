@@ -1,11 +1,13 @@
 <template>
   <div class="c-modal">
     <div class="c-container">
-      <a @click="$emit('close')">close</a>
+      <a @click="$emit('close')">
+        <i class="fas fa-times"></i>
+      </a>
       <p>Add a comment:</p>
       <form @submit.prevent>
         <textarea v-model.trim="comment"></textarea>
-        <button @click="addComment()" :disabled="comment == ''" class="button">add comment</button>
+        <button @click="addComment()" :disabled="comment == ''" class="button">Add comment</button>
       </form>
     </div>
   </div>

@@ -50,10 +50,15 @@
     <transition name="fade">
       <div v-if="showPostModal" class="p-modal">
         <div class="p-container">
-          <a @click="closePostModal()" class="close">close</a>
-          <div class="post">
+          <a @click="closePostModal()" class="close">
+            <i class="fas fa-times"></i>
+          </a>
+          <div class="post d-flex flex-column">
             <h5>{{ fullPost.userName }}</h5>
             <span>{{ fullPost.createdOn | formatDate }}</span>
+            <div v-show="fullPost.imageUrl !== ''" class="align-self-center py-2">
+              <img :src="fullPost.imageUrl">
+            </div>
             <p>{{ fullPost.content }}</p>
             <ul>
               <li><a>Comments {{ fullPost.comments }}</a></li>

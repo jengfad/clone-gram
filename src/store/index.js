@@ -86,7 +86,9 @@ const store = new Vuex.Store({
     },
     async createPost({ state, commit }, post) {
       // upload image in firebase storage
-      const imageUrl = await uploadImage(post.imageData);
+      let imageUrl = "";
+      if (post.imageData !== null)
+        imageUrl = await uploadImage(post.imageData);
 
       // create post in firebase
       await fb.postsCollection.add({
