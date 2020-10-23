@@ -10,10 +10,19 @@
           <p>{{ userProfile.title }}</p>
           <div class="create-post">
             <p>Create a post</p>
+            <hr>
+            <div class="img-upload">
+              <input type="file" @change="onFileChange" />
+              <div v-if="imageUrl" class="img-preview mt-3 d-flex justify-content-center">
+                <img :src="imageUrl" />
+              </div>
+            </div>
+            <hr>
             <form @submit.prevent>
               <textarea v-model.trim="post.content"></textarea>
               <button @click="createPost()" :disabled="post.content === ''" class="button">Post</button>
             </form>
+
           </div>
         </div>
       </div>
@@ -83,13 +92,18 @@ export default {
       selectedPost: {},
       showPostModal: false,
       fullPost: {},
-      postComments: []
+      postComments: [],
+      imageUrl: null
     }
   },
   computed: {
     ...mapState(['userProfile', 'posts'])
   },
   methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.imageUrl = URL.createObjectURL(file);
+    },
     createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })
       this.post.content = ''
@@ -140,5 +154,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .img-preview {
+    img {
+      max-width: 300px;
+      border: 1px solid lightgray;
+    }
+  }
 </style>
