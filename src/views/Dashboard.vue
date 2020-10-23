@@ -19,7 +19,7 @@
             </div>
             <hr>
             <form @submit.prevent>
-              <textarea v-model.trim="post.content"></textarea>
+              <textarea placeholder="What's up?" v-model.trim="post.content"></textarea>
               <button @click="createPost()" :disabled="post.content === ''" class="button">Post</button>
             </form>
 
@@ -32,7 +32,7 @@
             <h5>{{ post.userName }}</h5>
             <span>{{ post.createdOn | formatDate }}</span>
             <p class="pb-2">{{ post.content | trimLength }}</p>
-            <img width="200" src="https://cdn.britannica.com/26/162626-050-3534626F/Koala.jpg">
+            <img :src="post.imageUrl">
             <ul>
               <li><a @click="toggleCommentModal(post)">Comments {{ post.comments }}</a></li>
               <li><a @click="likePost(post.id, post.likes)">Likes {{ post.likes }}</a></li>
@@ -93,7 +93,8 @@ export default {
       showPostModal: false,
       fullPost: {},
       postComments: [],
-      imageUrl: null
+      imageUrl: null,
+      imageData: null
     }
   },
   computed: {
@@ -102,10 +103,11 @@ export default {
   methods: {
     onFileChange(e) {
       const file = e.target.files[0];
+      this.imageData = file;
       this.imageUrl = URL.createObjectURL(file);
     },
-    createPost() {
-      this.$store.dispatch('createPost', { content: this.post.content })
+    async createPost() {
+      this.$store.dispatch('createPost', { content: this.post.content, imageData: this.imageData })
       this.post.content = ''
     },
     toggleCommentModal(post) {
@@ -154,10 +156,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .img-preview {
-    img {
-      max-width: 300px;
-      border: 1px solid lightgray;
-    }
+  img {
+    max-width: 300px;
+    border: 1px solid lightgray;
   }
 </style>

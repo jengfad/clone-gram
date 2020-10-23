@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 // firebase init
 const firebaseConfig = {
@@ -18,6 +19,7 @@ firebase.firestore().enablePersistence()
 // utils
 const db = firebase.firestore()
 const auth = firebase.auth()
+const storage = firebase.storage()
 
 // collection references
 const usersCollection = db.collection('users')
@@ -29,6 +31,7 @@ const likesCollection = db.collection('likes')
 export {
   db,
   auth,
+  storage,
   usersCollection,
   postsCollection,
   commentsCollection,

@@ -19,6 +19,11 @@ fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
   store.commit('setPosts', postsArray)
 })
 
+async function uploadImage(imageData) {
+  const snapshot = await fb.storage.ref(`${imageData.name}`).put(imageData);
+  return await snapshot.ref.getDownloadURL();
+}
+
 const store = new Vuex.Store({
   state: {
     userProfile: {},
@@ -80,10 +85,14 @@ const store = new Vuex.Store({
       router.push('/login')
     },
     async createPost({ state, commit }, post) {
+      // upload image in firebase storage
+      const imageUrl = await uploadImage(post.imageData);
+
       // create post in firebase
       await fb.postsCollection.add({
         createdOn: new Date(),
         content: post.content,
+        imageUrl: imageUrl,
         userId: fb.auth.currentUser.uid,
         userName: state.userProfile.name,
         comments: 0,
